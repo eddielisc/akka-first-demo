@@ -11,7 +11,11 @@ a small application to find all files in predefined directory, then count the li
 
 #### Build & Run
 
+###### Build
+
 > mvn package
+
+###### Run
 
 > java -jar akkaDemo.jar [filePath]
 
