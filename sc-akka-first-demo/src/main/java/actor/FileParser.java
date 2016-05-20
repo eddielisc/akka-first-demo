@@ -1,7 +1,5 @@
 package actor;
 
-import java.io.File;
-
 import akka.actor.ActorSelection;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
