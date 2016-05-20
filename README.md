@@ -29,6 +29,7 @@ a small application to find all files in predefined directory, then count the li
 #### Enhancement
 
 1. file logging with SLF4J
+2. Use any emthod to stop all actors & system instead of calling system shutdown
 
 
 
