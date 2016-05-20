@@ -14,7 +14,6 @@ import event.Scan;
 public class FileScanner extends UntypedActor {
 	LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
-	static String pathString = "/Users/eddieli/Documents/temp/tests";
 	private Integer fileNum = 0;
 	private Integer fileDoneCount = 0;
 
@@ -25,11 +24,20 @@ public class FileScanner extends UntypedActor {
 			Path path = Paths.get(scan.getFolder());
 
 			if (Files.exists(path) && Files.isDirectory(path)) {
-				File[] files = new File(pathString).listFiles();
+				File[] files = new File(scan.getFolder()).listFiles();
 				fileNum = files.length;
+				if(fileNum ==0){
+					System.out.println("no file in " + scan.getFolder());
+					context().stop(getSelf());
+					context().system().shutdown();
+				}
 				for (File file : files) {
 					getContext().actorSelection("/user/fileParser").tell(new Event("start-of-file", file), getSelf());
 				}
+			}else{
+				System.out.println("directory is not exist " + scan.getFolder());
+				context().stop(getSelf());
+				context().system().shutdown();
 			}
 		} else if (message instanceof String && "success".equalsIgnoreCase(String.valueOf(message))) {
 			fileDoneCount++;
