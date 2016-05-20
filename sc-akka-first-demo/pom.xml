@@ -11,7 +11,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.8</jdk.version>
+		<jdk.version>1.7</jdk.version>
 	</properties>
 
 	<dependencies>
@@ -33,7 +33,7 @@
 	<build>
 		<finalName>akkaDemo</finalName>
 		<plugins>
-<!-- download source code in Eclipse, best practice -->
+			<!-- download source code in Eclipse, best practice -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -43,26 +43,23 @@
 					<downloadJavadocs>false</downloadJavadocs>
 				</configuration>
 			</plugin>
-
-			<!-- Set a compiler level -->
-			<!-- <plugin>
+		
+			<!-- Set a JDK compiler level -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.5.1</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
 				</configuration>
-			</plugin> -->
-
+			</plugin>
+			
 			<!-- Make this jar executable -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-				  <excludes>
-					<exclude>**/log4j.properties</exclude>
-				  </excludes>
 				  <archive>
 				    <manifest>
 					<addClasspath>true</addClasspath>

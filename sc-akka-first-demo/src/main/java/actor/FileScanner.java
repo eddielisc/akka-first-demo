@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
+import constant.Constant;
 import event.Event;
 import event.Scan;
 
@@ -33,14 +34,14 @@ public class FileScanner extends UntypedActor {
 					context().system().shutdown();
 				}
 				for (File file : files) {
-					getContext().actorSelection("/user/fileParser").tell(new Event("start-of-file", file), getSelf());
+					getContext().actorSelection("/user/fileParser").tell(new Event(Constant.statusStart, file), getSelf());
 				}
 			}else{
 				System.out.println("directory is not exist " + scan.getFolder());
 				context().stop(getSelf());
 				context().system().shutdown();
 			}
-		} else if (message instanceof String && "success".equalsIgnoreCase(String.valueOf(message))) {
+		} else if (message instanceof String && Constant.statusDone.equalsIgnoreCase(String.valueOf(message))) {
 			fileDoneCount++;
 			log.debug("succes : {}, {}", fileNum, fileDoneCount);
 			if (fileDoneCount == fileNum) {
