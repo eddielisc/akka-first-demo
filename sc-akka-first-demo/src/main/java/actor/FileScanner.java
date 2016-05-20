@@ -17,6 +17,7 @@ public class FileScanner extends UntypedActor {
 	private Integer fileNum = 0;
 	private Integer fileDoneCount = 0;
 
+	@SuppressWarnings("deprecation")
 	public void onReceive(Object message) {
 		if (message instanceof Scan) {
 			Scan scan = (Scan) message;
