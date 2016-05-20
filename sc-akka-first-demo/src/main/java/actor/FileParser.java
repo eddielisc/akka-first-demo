@@ -14,15 +14,13 @@ public class FileParser extends UntypedActor {
 	 public void onReceive(Object message) throws Exception {
 		 ActorSelection aggregator = getContext().actorSelection("/user/aggregator");
 		 ActorSelection fileScanner = getContext().actorSelection("/user/fileScanner");
-		 if(message instanceof File){
-			 aggregator.tell(message, getSelf());
-		 }else if(message instanceof Event){
+		 if(message instanceof Event){
 			 Event event = (Event) message;
 			 Boolean isCall = true;
 
 			 if("end-of-file-done".equalsIgnoreCase(event.getStatus())){
 				 isCall = false;
-				 log.info("end-of-file-done");
+				 log.debug("end-of-file-done");
 				 fileScanner.tell("success", getSelf());
 			 }
 			 if(isCall)

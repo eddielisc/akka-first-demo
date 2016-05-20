@@ -18,14 +18,12 @@ public class Aggregator extends UntypedActor {
 			 //line
 			Event event = (Event) message;
 			if("start-of-file".equalsIgnoreCase(event.getStatus())){
-				 log.info("init Event start of file");
+				 log.debug("init Event start of file");
 				 event.setStatus("line");
 				 event.setLineNum(0);
-				 event.setBufferedReader(new BufferedReader(new FileReader((File) message)));
-				 getSender().tell(event, getSelf());
-
+				 event.setBufferedReader(new BufferedReader(new FileReader(event.getFile())));
 			}else if("line".equalsIgnoreCase(event.getStatus())){
-				log.info("line");
+				log.debug("line");
 				BufferedReader br = event.getBufferedReader();
 				if(br != null){
 					while (br.readLine() != null) {
@@ -35,8 +33,8 @@ public class Aggregator extends UntypedActor {
 				}
 				event.setStatus("end-of-file");
 		 	}else if("end-of-file".equalsIgnoreCase(event.getStatus())){
-		 		log.info("end");
-		 		System.out.println(event.getLineNum());
+		 		log.debug("end");
+		 		System.out.println(event.getFile().getName() +  "\t" + event.getLineNum());
 		 		event.setStatus("end-of-file-done");
 		 	}
 		 	getSender().tell(event,getSelf());
