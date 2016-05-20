@@ -1,10 +1,12 @@
 # sc-akka-first-demo
 first try for akka
 
-## build jar
+### build jar
 mvn package
 
-## run jar
+### run jar
 java -jar akkaDemo.jar [filePath]
 
+
+### seq diagram
 ![alt tag](https://github.com/eddielisc/sc-akka-first-demo/blob/master/sc-akka-first-demo/doc/digaram.png)
