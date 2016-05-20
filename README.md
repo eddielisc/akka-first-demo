@@ -13,7 +13,7 @@ a small application to find all files in predefined directory, then count the li
 3. Akka Actor
 
 #### Seq diagram
-![alt tag](https://github.com/eddielisc/sc-akka-first-demo/blob/master/sc-akka-first-demo/doc/digaram.png)
+![alt tag](https://github.com/eddielisc/sc-akka-first-demo/blob/master/sc-akka-first-demo/doc/diagram.png)
 
 #### Build & Run
 
