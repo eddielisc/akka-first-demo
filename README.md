@@ -26,7 +26,7 @@ a small application to find all files in predefined directory, then count the li
 > java -jar akkaDemo.jar [filePath]
 
 
-#### Enhancement
+#### Room for improvement
 
 1. file logging with SLF4J
 2. Use any other method to stop all actors & system instead of calling system shutdown
